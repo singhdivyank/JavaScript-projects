@@ -1,6 +1,6 @@
 'use strict';
 
-// all selectors
+/* all selectors */
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -11,8 +11,8 @@ const nav = document.querySelector('.nav');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
-const header = document.querySelector('.header'); // webpage header
-// for slider widow
+const header = document.querySelector('.header'); // web page header
+// for slider window
 const slides = document.querySelectorAll('.slide');
 const btnLeft = document.querySelector('.slider__btn--left');
 const btnRight = document.querySelector('.slider__btn--right');
@@ -38,30 +38,46 @@ overlay.addEventListener('click', closeModal);
 
 // close modal window when escape is pressed
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
 });
 
 /* Button scrolling */
-btnScrollTo.addEventListener('click', function () {
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
 /* Page navigation */
-const pageNav = function (e) {
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
+  // Matching strategy
   if (e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
-};
-document.querySelector('.nav__links').addEventListener('click', pageNav);
+});
 
-/* Tabbed activity */
-// function for performing tabbed activity
-const tabActivity = function (e) {
-  const clicked = e.target.closest('.operation__tab');
-  // Guard clause
-  if (!clicked) return;
+/* Tabbed component */
+// function for performing tabeed activity
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  if (!clicked) return; // Guard clause
 
   // Remove active classes
   tabs.forEach(t => t.classList.remove('operations__tab--active'));
@@ -74,24 +90,27 @@ const tabActivity = function (e) {
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
-};
-tabsContainer.addEventListener('click', tabActivity);
+});
 
-// Menu animation
+/* Menu animation */
+
 const fade_n_glow = function (e) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
 
     siblings.forEach(el => {
       if (el !== link) el.style.opacity = this;
     });
+    // logo.style.opacity = this; -- not fading the logo
   }
 };
-nav.addEventListener('mouseover', fade_n_glow.bind(0.5)); // lesser opacity to fade
+nav.addEventListener('mouseover', fade_n_glow.bind(0.5)); // less opacity to fade
 nav.addEventListener('mouseout', fade_n_glow.bind(1)); // more opacity to glow
 
-// Sticky navigation: Intersection Observer API
+/* Sticky navigation: Intersection Observer API */
+
 const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
@@ -129,7 +148,7 @@ allSections.forEach(function (section) {
   section.classList.add('section--hidden');
 });
 
-/* Loading images */
+/* Lazy loading images */
 const imgTargets = document.querySelectorAll('img[data-src]');
 
 const loadImg = function (entries, observer) {
@@ -139,6 +158,7 @@ const loadImg = function (entries, observer) {
 
   // Replace src with data-src
   entry.target.src = entry.target.dataset.src;
+
   entry.target.addEventListener('load', function () {
     entry.target.classList.remove('lazy-img');
   });
@@ -151,7 +171,6 @@ const imgObserver = new IntersectionObserver(loadImg, {
   threshold: 0,
   rootMargin: '200px',
 });
-
 imgTargets.forEach(img => imgObserver.observe(img));
 
 /* Implementing slider */
@@ -202,19 +221,20 @@ const slider = function () {
     goToSlide(curSlide);
     activateDot(curSlide);
   };
+
   goToSlide(0);
   createDots();
   activateDot(0);
 
+  // Event handlers
   btnRight.addEventListener('click', nextSlide); // slide right by clicking button
   btnLeft.addEventListener('click', prevSlide); // slide left by clicking button
 
   // switch slides from keyboard's arrow key
-  const arrowSwitch = function (e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowLeft') prevSlide();
-    if (e.key === 'ArrowRight') nextSlide();
-  };
-  document.addEventListener('keydown', arrowSwitch);
+    e.key === 'ArrowRight' && nextSlide();
+  });
 
   dotContainer.addEventListener('click', function (e) {
     if (e.target.classList.contains('dots__dot')) {
