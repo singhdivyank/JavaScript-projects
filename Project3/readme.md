@@ -1,7 +1,10 @@
 # User Interface
 ![](https://github.com/singhdivyank/JavaScript-projects/blob/main/Project3/UI.png)
 
-A very easy game of dice roll between two players taking chances at rolling the dice. A number is obtained on rolling the dice which gets added to the player's score. 
+A very easy game of dice roll between two players taking chances at rolling the dice. A number is obtained on rolling the dice which gets added to the player's score. The first player to reach 100 is the winner
+
+# Declaring the winner
+![](https://github.com/singhdivyank/JavaScript-projects/blob/main/Project3/Winner.png)
 
 **However the game is not so simple**. Wondering why? A dice roll of 1 makes this game interesting-
 1. On a dice roll of 1, the other player gains control of the dice
@@ -20,7 +23,7 @@ A very easy game of dice roll between two players taking chances at rolling the 
 
 **Describing the gameplay is difficult. It is advisable to understand the game by playing it. However an algorithm describing the workflow is given below.**
 
-To play the game: 
+To play the game: https://singhdivyank.github.io/dice-game/
 
 # Game Algorithm
 ![](https://github.com/singhdivyank/JavaScript-projects/blob/main/Project3/pig-game-flowchart.png)
