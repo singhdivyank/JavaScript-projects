@@ -1,6 +1,6 @@
 An implementation of advanced Document Object Model features
 
-Website URL: 
+Website URL: https://singhdivyank.github.io/bankist/
 
 # Features
 1. Smooth scrolling
