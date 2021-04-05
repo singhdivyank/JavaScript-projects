@@ -5,3 +5,11 @@
 * Project2 - **Modal window**
 
 * Project3 - **Pig Game**
+
+* Project4 - **Bankist website**
+
+* Project5 - **Mapty App**
+
+* Project6 - 
+
+**Note**: The above mentioned projects were developed from scratch while learning JavaScript in the Udemy course by Jonas Schmedtmann, the orignal idea is retained I have only added a few new functionalities
