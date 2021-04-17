@@ -21,9 +21,7 @@ A very easy game of dice roll between two players taking chances at rolling the 
     c. Transfers dice control to next player
 3. New game- Resets the entire UI and sets score, current score to 0
 
-**Describing the gameplay is difficult. It is advisable to understand the game by playing it. However an algorithm describing the workflow is given below.**
-
-To play the game: https://singhdivyank.github.io/dice-game/
+**Describing the gameplay is difficult. It is advisable to understand the game by [playing](https://singhdivyank.github.io/dice-game/) it. However an algorithm describing the workflow is given below.**
 
 # Game Algorithm
 ![](https://github.com/singhdivyank/JavaScript-projects/blob/main/Project3/pig-game-flowchart.png)
