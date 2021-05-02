@@ -10,6 +10,6 @@
 
 * Project5 - **Mapty App**
 
-* Project6 - **Forkify App**
+* Project6 - **My first web application**
 
 **Note**: The above mentioned projects were developed from scratch while learning JavaScript in the Udemy course by Jonas Schmedtmann, the orignal idea is retained I have added new functionalities and improved few existing functionalities
