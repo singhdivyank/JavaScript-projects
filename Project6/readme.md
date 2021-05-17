@@ -1,6 +1,6 @@
 # About
 
-A modern application that renders Pizza receipes from APIs. The application allows users to add receipes, bookmark receipes and search a receipe from a search menu.
+A modern application that renders Pizza receipes from APIs using Netlify. The application allows users to add receipes, bookmark receipes and search a receipe from a search menu.
 
 # User Interface
 
